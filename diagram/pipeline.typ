@@ -11,8 +11,8 @@
   frozen((5, 0), "enc", [Wan 2.2 VAE\ encoder], h: 2.1, w: 0.85)
   op((7.4, 0), "sub", "−")
   op((8.6, 0), "div", "÷")
-  block((11, 0), "place", [Frame 0], h: 1.3)
-  io((13, 0), "out", raw("cond"), side: "west")
+  block((11.5, 0), "place", [Frame 0], h: 1.3)
+  io((13.6, 0), "out", raw("cond"), side: "west")
   arrow("in.east", "crop.west")
   arrow("crop.east", "enc.west")
   arrow("enc.east", "sub.west")
@@ -25,8 +25,8 @@
   note((8.6, -1.05), [σ], side: "north")
   note(("in.east", 50%, "crop.west"), [3 × 704 × 1248])
   note(("enc.east", 50%, "sub.west"), [mean])
-  note((9.85, 0), [48 × 1 × 44 × 78])
-  note((11, -1), [other frames are zero,\ mask is 1 on frame 0], side: "north")
+  note((10, 0), [48 × 1 × 44 × 78])
+  note((11.5, -1), [other frames are zero,\ mask is 1 on frame 0], side: "north")
 
   // decode
   let y = -3.8
@@ -53,16 +53,16 @@
   setup()
 
   io((0, 0), "x", raw("x_t"), side: "east")
-  io((1.6, 2.2), "pos", raw("caption"), side: "south")
-  io((1.6, -3.2), "neg", raw("negative"), side: "north")
+  io((2.8, 2.4), "pos", raw("caption"), side: "south")
+  io((2.8, -3.4), "neg", raw("negative"), side: "north")
   stage((2.8, 1), "dit-c", [PAN 2], w: 2, h: 1)
   stage((2.8, -1.4), "dit-u", [PAN 2], w: 2, h: 1)
   wire("x.east", (0.9, 0))
   wire((0.9, 1), (0.9, -1.4))
   arrow((0.9, 1), "dit-c.west")
   arrow((0.9, -1.4), "dit-u.west")
-  arrow("pos.south", (1.6, 1.5))
-  arrow("neg.north", (1.6, -2))
+  arrow("pos.south", "dit-c.north")
+  arrow("neg.north", "dit-u.south")
 
   op((5.4, 1), "sub", "−")
   arrow("dit-c.east", "sub.west")
